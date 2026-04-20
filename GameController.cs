@@ -1,5 +1,5 @@
 ﻿using System;
-
+namespace ConnectFour;
 public class GameController
 {
     private Board board;
