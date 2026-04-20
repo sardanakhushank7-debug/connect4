@@ -28,6 +28,12 @@ public class GameController
                 Console.WriteLine("Column full! Try again.");
                 continue;
             }
+            if (board.CheckWin(currentPlayer.Symbol))
+            {
+                board.Display();
+                Console.WriteLine(currentPlayer.Name + " wins!");
+                break;
+            }
 
             if (board.IsFull())
             {

@@ -9,7 +9,65 @@ public class Board
         for (int i = 0; i < 6; i++)
             for (int j = 0; j < 7; j++)
                 grid[i, j] = '.';
+
+
+        public bool CheckWin(char symbol)
+    {
+        // Horizontal
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (grid[i, j] == symbol &&
+                    grid[i, j + 1] == symbol &&
+                    grid[i, j + 2] == symbol &&
+                    grid[i, j + 3] == symbol)
+                    return true;
+            }
+        }
+
+        // Vertical
+        for (int j = 0; j < 7; j++)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (grid[i, j] == symbol &&
+                    grid[i + 1, j] == symbol &&
+                    grid[i + 2, j] == symbol &&
+                    grid[i + 3, j] == symbol)
+                    return true;
+            }
+        }
+
+        // Diagonal (bottom-left → top-right)
+        for (int i = 3; i < 6; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (grid[i, j] == symbol &&
+                    grid[i - 1, j + 1] == symbol &&
+                    grid[i - 2, j + 2] == symbol &&
+                    grid[i - 3, j + 3] == symbol)
+                    return true;
+            }
+        }
+
+        // Diagonal (top-left → bottom-right)
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (grid[i, j] == symbol &&
+                    grid[i + 1, j + 1] == symbol &&
+                    grid[i + 2, j + 2] == symbol &&
+                    grid[i + 3, j + 3] == symbol)
+                    return true;
+            }
+        }
+
+        return false;
     }
+}
 
     public void Display()
     {
