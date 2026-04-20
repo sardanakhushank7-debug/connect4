@@ -16,6 +16,7 @@ public class GameController
     }
 
     public void StartGame()
+        Console.WriteLine("=== CONNECT FOUR ===");
     {
         while (true)
         {
@@ -25,7 +26,7 @@ public class GameController
 
             if (!board.DropDisc(move, currentPlayer.Symbol))
             {
-                Console.WriteLine("Column full! Try again.");
+                Console.WriteLine("Column is full! Try a different column.");
                 continue;
             }
             if (board.CheckWin(currentPlayer.Symbol))

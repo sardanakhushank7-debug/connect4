@@ -17,8 +17,18 @@ namespace ConnectFour
 
         public override int MakeMove()
         {
-            Console.Write($"{Name}, choose a column (1-7): ");
-            return int.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.Write($"{Name}, choose a column (1-7): ");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out int column) && column >= 1 && column <= 7)
+                {
+                    return column;
+                }
+
+                Console.WriteLine("Invalid input! Enter a number between 1 and 7.");
+            }
         }
     }
 }

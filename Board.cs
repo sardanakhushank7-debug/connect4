@@ -69,20 +69,25 @@ public class Board
     }
 }
 
-    public void Display()
+public void Display()
+{
+    Console.WriteLine();
+
+    for (int i = 0; i < 6; i++)
     {
-        for (int i = 0; i < 6; i++)
+        for (int j = 0; j < 7; j++)
         {
-            for (int j = 0; j < 7; j++)
-            {
-                Console.Write(grid[i, j] + " ");
-            }
-            Console.WriteLine();
+            Console.Write("| " + grid[i, j] + " ");
         }
-        Console.WriteLine("1 2 3 4 5 6 7");
+        Console.WriteLine("|");
     }
 
-    public bool DropDisc(int column, char symbol)
+    Console.WriteLine("-----------------------------");
+    Console.WriteLine("  1   2   3   4   5   6   7");
+    Console.WriteLine();
+}
+
+public bool DropDisc(int column, char symbol)
     {
         column--; // user enters 1–7
 
