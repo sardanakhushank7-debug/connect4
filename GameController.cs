@@ -16,37 +16,54 @@ public class GameController
     }
 
     public void StartGame()
-        Console.WriteLine("=== CONNECT FOUR ===");
     {
-        while (true)
+        while (true) // whole game loop (restart)
         {
-            board.Display();
+            board = new Board(); // reset board
+            currentPlayer = player1;
 
-            int move = currentPlayer.MakeMove();
+            Console.WriteLine("=== CONNECT FOUR ===");
 
-            if (!board.DropDisc(move, currentPlayer.Symbol))
-            {
-                Console.WriteLine("Column is full! Try a different column.");
-                continue;
-            }
-            if (board.CheckWin(currentPlayer.Symbol))
+            while (true) // single game loop
             {
                 board.Display();
-                Console.WriteLine(currentPlayer.Name + " wins!");
-                break;
+
+                int move = currentPlayer.MakeMove();
+
+                if (!board.DropDisc(move, currentPlayer.Symbol))
+                {
+                    Console.WriteLine("Column is full! Try again.");
+                    continue;
+                }
+
+                if (board.CheckWin(currentPlayer.Symbol))
+                {
+                    board.Display();
+                    Console.WriteLine(currentPlayer.Name + " wins!");
+                    break;
+                }
+
+                if (board.IsFull())
+                {
+                    board.Display();
+                    Console.WriteLine("Game is a draw!");
+                    break;
+                }
+
+                SwitchTurn();
             }
 
-            if (board.IsFull())
+            // 🔁 PLAY AGAIN PART
+            Console.Write("Play again? (y/n): ");
+            string choice = Console.ReadLine().ToLower();
+
+            if (choice != "y")
             {
-                board.Display();
-                Console.WriteLine("Game is a draw!");
+                Console.WriteLine("Thanks for playing!");
                 break;
             }
-
-            SwitchTurn();
         }
     }
-
     private void SwitchTurn()
     {
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
