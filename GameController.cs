@@ -17,7 +17,7 @@ public class GameController
 
     public void StartGame()
     {
-        while (true) // whole game loop (restart)
+        while (true) // Handles the game flow and turn switching
         {
             board = new Board(); // reset board
             currentPlayer = player1;
