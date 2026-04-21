@@ -67,7 +67,7 @@ public class Board
         return true;
     }
 
-    public bool CheckWin(char symbol)
+    public bool CheckWin(char symbol)// Manages Grid and win Detection
     {
         // Horizontal
         for (int i = 0; i < 6; i++)
